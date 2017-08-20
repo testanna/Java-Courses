@@ -29,4 +29,19 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
+    public void selectFirstContact() {
+        click(By.id("1"));
+    }
+
+    public void initContactModification() {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
+    }
+
+    public void returnToContactPage() {
+        click(By.linkText("home page"));
+    }
 }
