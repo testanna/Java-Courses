@@ -30,7 +30,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void selectFirstContact() {
-        click(By.id("1"));
+        click(By.name("selected[]"));
     }
 
     public void initContactModification() {
@@ -44,4 +44,14 @@ public class ContactHelper extends HelperBase {
     public void returnToContactPage() {
         click(By.linkText("home page"));
     }
+
+    public void deleteSelectedContacts() {
+        click(By.xpath("//input[@value='Delete']"));
+        //click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    }
+
+    public void acceptDeletion() {
+        wd.switchTo().alert().accept();
+    }
+
 }
