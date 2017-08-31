@@ -5,10 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.log4testng.Logger;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -84,11 +86,15 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<>();
-        List<WebElement> elements = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr/td[2]"));
-        for (WebElement element : elements){
-            String lastName = element.getText();
-            ContactData contact = new ContactData(null, lastName, null, null,
-                    null, null);
+        List<WebElement> checkBoxes = wd.findElements(By.xpath("//*[@name=\"selected[]\"]"));
+        List<WebElement> firstNames = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr/td[3]"));
+        List<WebElement> lastNames = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr/td[2]"));
+
+        for (int i = 0; i < firstNames.size(); i++) {
+            String firstName = firstNames.get(i).getText();
+            String lastName = lastNames.get(i).getText();
+            String id = checkBoxes.get(i).getAttribute("value");
+            ContactData contact = new ContactData(id, firstName, lastName);
             contacts.add(contact);
         }
         return contacts;
