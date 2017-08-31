@@ -93,7 +93,7 @@ public class ContactHelper extends HelperBase {
         for (int i = 0; i < firstNames.size(); i++) {
             String firstName = firstNames.get(i).getText();
             String lastName = lastNames.get(i).getText();
-            String id = checkBoxes.get(i).getAttribute("value");
+            int id = Integer.parseInt(checkBoxes.get(i).getAttribute("value"));
             ContactData contact = new ContactData(id, firstName, lastName);
             contacts.add(contact);
         }
