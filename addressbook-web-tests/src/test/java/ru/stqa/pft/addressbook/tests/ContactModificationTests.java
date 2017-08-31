@@ -17,7 +17,7 @@ public class ContactModificationTests extends TestBase{
                     null,null, "test1"));
         }
         int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().selectFirstContact();
+        app.getContactHelper().selectContact(before-1);
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("Name1", "Last1", "Penza1",
                 "666666","email@test.ru", null), false);

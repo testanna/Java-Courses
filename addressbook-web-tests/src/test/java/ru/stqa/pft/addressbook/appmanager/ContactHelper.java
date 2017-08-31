@@ -37,8 +37,8 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void selectFirstContact() {
-        click(By.name("selected[]"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void initContactModification() {
@@ -54,6 +54,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void deleteSelectedContacts() {
+
         click(By.xpath("//input[@value='Delete']"));
     }
 

@@ -16,7 +16,7 @@ public class ContactDeletionTest extends TestBase{
                     null,null, "test1"));
         }
         int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().selectFirstContact();
+        app.getContactHelper().selectContact(before-1);
         app.getContactHelper().deleteSelectedContacts();
         app.getContactHelper().acceptDeletion();
         app.getNavigationHelper().goToHomePage();
@@ -32,7 +32,7 @@ public class ContactDeletionTest extends TestBase{
                     null,null, "test1"));
         }
         int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().selectFirstContact();
+        app.getContactHelper().selectContact(before-1);
         app.getContactHelper().initContactModification();
         app.getContactHelper().deleteSelectedContacts();
         app.getNavigationHelper().goToHomePage();
