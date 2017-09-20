@@ -29,7 +29,7 @@ public class ContactDeletionTest extends TestBase{
         Assert.assertEquals(before, after);
     }
 
-    @Test
+    @Test (enabled = false)
     public void testContactDeletionFromForm(){
         app.getNavigationHelper().goToHomePage();
         if (!app.getContactHelper().isThereAContact()){
