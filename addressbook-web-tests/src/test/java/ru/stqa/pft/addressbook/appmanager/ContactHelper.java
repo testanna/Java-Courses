@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by User on 020 20.08.17.
@@ -43,6 +46,10 @@ public class ContactHelper extends HelperBase {
 
     public void selectContact(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    private void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void initContactModification() {
@@ -96,16 +103,31 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-    public void modify(int index, ContactData contact) {
-        selectContact(index);
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<>();
+        List<WebElement> checkBoxes = wd.findElements(By.xpath("//*[@name=\"selected[]\"]"));
+        List<WebElement> firstNames = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr/td[3]"));
+        List<WebElement> lastNames = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr/td[2]"));
+
+        for (int i = 0; i < firstNames.size(); i++) {
+            String firstName = firstNames.get(i).getText();
+            String lastName = lastNames.get(i).getText();
+            int id = Integer.parseInt(checkBoxes.get(i).getAttribute("value"));
+            contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+        }
+        return contacts;
+    }
+
+    public void modify(ContactData contact) {
+        selectContactById(contact.getId());
         initContactModification();
         fillContactForm(contact, false);
         submitContactModification();
         returnToContactPage();
     }
 
-    public void delete(int index) {
-        selectContact(index);
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
         deleteSelectedContacts();
         acceptDeletion();
     }
