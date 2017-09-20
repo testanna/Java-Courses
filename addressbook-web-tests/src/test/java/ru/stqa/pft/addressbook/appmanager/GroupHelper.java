@@ -78,4 +78,15 @@ public class GroupHelper extends HelperBase {
         }
         return groups;
     }
+
+
+    public void modifyGroup(int index, GroupData group) {
+        selectGroup(index);
+        initGroupModification();
+        //GroupData group = new GroupData(before.get(index).getId(),"test11",
+        //        "test21", "test31");
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupPage();
+    }
 }
