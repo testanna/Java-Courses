@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -78,6 +79,7 @@ public class ContactHelper extends HelperBase {
         initContactCreation();
         fillContactForm(contact, true);
         submitContactCreation();
+        contactCache = null;
         returnToContactPage();
     }
 
@@ -104,8 +106,13 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
+    private Contacts contactCache = null;
+
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if (contactCache != null){
+            return new Contacts(contactCache);
+        }
+        Contacts contactCache = new Contacts();
         List<WebElement> checkBoxes = wd.findElements(By.xpath("//*[@name=\"selected[]\"]"));
         List<WebElement> firstNames = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr/td[3]"));
         List<WebElement> lastNames = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr/td[2]"));
@@ -114,9 +121,9 @@ public class ContactHelper extends HelperBase {
             String firstName = firstNames.get(i).getText();
             String lastName = lastNames.get(i).getText();
             int id = Integer.parseInt(checkBoxes.get(i).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+            contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
         }
-        return contacts;
+        return new Contacts(contactCache);
     }
 
     public void modify(ContactData contact) {
@@ -124,12 +131,14 @@ public class ContactHelper extends HelperBase {
         initContactModification();
         fillContactForm(contact, false);
         submitContactModification();
+        contactCache = null;
         returnToContactPage();
     }
 
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
         deleteSelectedContacts();
+        contactCache = null;
         acceptDeletion();
     }
 }
