@@ -10,35 +10,23 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by User on 024 24.09.17.
- */
-public class ContactPhoneTests extends TestBase{
+public class ContactAddressTests extends TestBase{
     @BeforeMethod
     public void ensurePreconditions(){
         app.goTo().homePage();
         if (app.contact().all().size() == 0){
             app.contact().create( new ContactData().withFirstName("Name").withGroup("test1").withLastName("Last")
-                    .withHomePhone("111111").withMobilePhone("+72222").withWorkPhone("33-33"));
+                    .withAddress("Penza"));
         }
     }
 
     @Test
-    public void testContactPhones()  {
+    public void testContactAddresses()  {
         app.goTo().homePage();
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+        assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
     }
 
-    private String mergePhones(ContactData contact) {
-        return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-                .stream().filter(s -> !s.equals(""))
-                .map(ContactPhoneTests::cleaned)
-                .collect(Collectors.joining("\n"));
-    }
 
-    public static String cleaned(String phone){
-        return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
-    }
 }
