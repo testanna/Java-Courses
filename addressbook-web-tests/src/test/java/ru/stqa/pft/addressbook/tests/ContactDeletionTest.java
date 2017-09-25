@@ -8,9 +8,6 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by User on 020 20.08.17.
- */
 public class ContactDeletionTest extends TestBase{
     @BeforeMethod
     public void ensurePreconditions(){

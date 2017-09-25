@@ -10,9 +10,6 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by User on 024 24.09.17.
- */
 public class ContactPhoneTests extends TestBase{
     @BeforeMethod
     public void ensurePreconditions(){
