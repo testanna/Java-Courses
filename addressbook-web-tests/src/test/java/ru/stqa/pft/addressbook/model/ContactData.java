@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
     private int id;
     private  String firstName;
@@ -16,6 +18,8 @@ public class ContactData {
     private String allEmails;
 
     private String group;
+
+    private File photo;
 
     public int getId() {
         return id;
@@ -64,9 +68,14 @@ public class ContactData {
         return allEmails;
     }
 
+    public File getPhoto() {
+        return photo;
+    }
+
     public String getGroup() {
         return group;
     }
+
 
     public ContactData withId(int id) {
         this.id = id;
@@ -133,13 +142,29 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withPhoto(File photo){
+        this.photo = photo;
+        return this;
+    }
+
 
     @Override
     public String toString() {
         return "ContactData{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", homePhone='" + homePhone + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
+                ", workPhone='" + workPhone + '\'' +
+                ", allPhones='" + allPhones + '\'' +
+                ", email1='" + email1 + '\'' +
+                ", email2='" + email2 + '\'' +
+                ", email3='" + email3 + '\'' +
+                ", allEmails='" + allEmails + '\'' +
+                ", group='" + group + '\'' +
+                ", photo=" + photo +
                 '}';
     }
 
@@ -152,11 +177,7 @@ public class ContactData {
 
         if (id != that.id) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null)
-            return false;
-        return email1 != null ? email1.equals(that.email1) : that.email1 == null;
+        return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
     }
 
     @Override
@@ -164,12 +185,7 @@ public class ContactData {
         int result = id;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
-        result = 31 * result + (email1 != null ? email1.hashCode() : 0);
         return result;
     }
-
-
 }
 

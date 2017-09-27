@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("email"), contactData.getEmail1());
         type(By.name("email2"), contactData.getEmail2());
         type(By.name("email3"), contactData.getEmail3());
+        attach(By.name("photo"), contactData.getPhoto());
 
         if (creation){
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -115,10 +117,10 @@ public class ContactHelper extends HelperBase {
         Contacts contactCache = new Contacts();
         List<WebElement> rows = wd.findElements(By.name("entry"));
         for (WebElement row: rows){
-            List<WebElement> cells = wd.findElements(By.tagName("td"));
+            List<WebElement> cells = row.findElements(By.tagName("td"));
             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
-            String firstName = cells.get(1).getText();
-            String lastName = cells.get(2).getText();
+            String firstName = cells.get(2).getText();
+            String lastName = cells.get(1).getText();
             String allPhones = cells.get(5).getText();
             String address = cells.get(3).getText();
             String allEmails = "";
