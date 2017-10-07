@@ -1,0 +1,12 @@
+<?php
+$g_hostname               = 'localhost';
+$g_db_type                = 'mysqli';
+$g_database_name          = 'bugtracker';
+$g_db_username            = 'root';
+$g_db_password            = '';
+
+$g_default_timezone       = 'Europe/Berlin';
+
+$g_crypto_master_salt     = 'OXl1ykIkV0XPjzt7jxeiApoPyAbo9p5F223FYi+QQjo=';
+
+$g_signup_use_captcha           = OFF;
