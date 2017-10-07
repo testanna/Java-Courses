@@ -13,7 +13,6 @@ import ru.stqa.pft.addressbook.model.Groups;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -34,25 +33,25 @@ public class DbHelper {
     }
 
     public Groups groups() {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        List<GroupData> result = session.createQuery("from GroupData").list();
-        for (GroupData group : result) {
-            System.out.println(group);
+        List<GroupData> result;
+        try (Session session = sessionFactory.openSession()){
+            result = session.createQuery("from GroupData").list();
+            for (GroupData group : result) {
+                System.out.println(group);
+            }
         }
-        session.close();
         return new Groups(result);
     }
 
     public Contacts contacts() {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        List<ContactData> result = session.createQuery
-                ("from ContactData where deprecated='0000-00-00'").list();
-        for (ContactData contact : result) {
-            System.out.println(contact);
+        List<ContactData> result;
+        try (Session session = sessionFactory.openSession()){
+            result = session.createQuery
+                    ("from ContactData where deprecated='0000-00-00'").list();
+            for (ContactData contact : result) {
+                System.out.println(contact);
+            }
         }
-        session.close();
         return new Contacts(result);
     }
 
@@ -72,11 +71,11 @@ public class DbHelper {
     }
 
     public ContactData getContactById(int id){
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        List<ContactData> result = session.createQuery
-                ("from ContactData where id='" + id + "'").list();
-        session.close();
+        List<ContactData> result;
+        try (Session session = sessionFactory.openSession()) {
+            result = session.createQuery
+                    ("from ContactData where id='" + id + "'").list();
+        }
         return new Contacts(result).iterator().next();
     }
 
@@ -102,11 +101,11 @@ public class DbHelper {
     }
 
     public GroupData getGroupById(int id){
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        List<GroupData> result = session.createQuery
-                ("from GroupData where id='" + id + "'").list();
-        session.close();
+        List<GroupData> result;
+        try (Session session = sessionFactory.openSession()){
+            result = session.createQuery
+                    ("from GroupData where id='" + id + "'").list();
+        }
         return new Groups(result).iterator().next();
     }
 }
