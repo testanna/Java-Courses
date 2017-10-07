@@ -12,7 +12,8 @@ public class ContactAddressTests extends TestBase{
     public void ensurePreconditions(){
         if (app.db().contacts().size() == 0){
             app.goTo().homePage();
-            app.contact().create( new ContactData().withFirstName("Name").withLastName("Last").withGroup("test1"));
+            app.contact().create( new ContactData().withFirstName("Name").withLastName("Last"));
+            //withGroup("test1"))
         }
     }
 

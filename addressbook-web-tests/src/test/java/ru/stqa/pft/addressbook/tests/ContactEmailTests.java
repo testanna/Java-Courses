@@ -12,8 +12,9 @@ public class ContactEmailTests extends TestBase{
     public void ensurePreconditions(){
         if (app.db().contacts().size() == 0){
             app.goTo().homePage();
-            app.contact().create( new ContactData().withFirstName("Name").withGroup("test1").withLastName("Last")
+            app.contact().create( new ContactData().withFirstName("Name").withLastName("Last")
                     .withEmail1("email1").withEmail2("222@kf.ru").withEmail3("111"));
+            //.withGroup("test1")
         }
     }
 

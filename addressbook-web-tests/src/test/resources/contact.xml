@@ -9,7 +9,6 @@
     <email1>Email10</email1>
     <email2>Email20</email2>
     <email3>Email30</email3>
-    <group>test1</group>
   </contact>
   <contact>
     <firstName>First1</firstName>
@@ -21,6 +20,5 @@
     <email1>Email11</email1>
     <email2>Email21</email2>
     <email3>Email31</email3>
-    <group>test1</group>
   </contact>
 </list>

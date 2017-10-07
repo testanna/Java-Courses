@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -38,7 +39,9 @@ public class ContactHelper extends HelperBase {
         //attach(By.name("photo"), contactData.getPhoto());
 
         if (creation){
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            //if (contactData.getGroup != null) {
+             //   new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            //}
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -148,6 +151,20 @@ public class ContactHelper extends HelperBase {
         deleteSelectedContacts();
         contactCache = null;
         acceptDeletion();
+    }
+
+    public void addToGroup(ContactData contact, GroupData group) {
+        selectContactById(contact.getId());
+        selectGroup(group);
+        submitAdditionTiGroup();
+    }
+
+    public void selectGroup(GroupData group){
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
+    }
+
+    public void submitAdditionTiGroup(){
+        click(By.name("add"));
     }
 
     public ContactData infoFromEditForm(ContactData contact) {
