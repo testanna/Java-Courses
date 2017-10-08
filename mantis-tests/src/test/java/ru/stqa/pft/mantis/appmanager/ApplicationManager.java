@@ -20,6 +20,10 @@ public class ApplicationManager {
     private WebDriver wd;
     private RegistrationHelper registrationHelper;
     private FtpHelper ftp;
+    private MailHelper mailHelper;
+    private ManageUsersHelper manageUserHelper;
+    private LoginHelper loginHelper;
+    private ResetPasswordHelper resetPasswordHelper;
 
     public ApplicationManager(String browser) {
 
@@ -47,11 +51,32 @@ public class ApplicationManager {
         return properties.getProperty(key);
     }
 
+    public LoginHelper login(){
+        if (loginHelper == null){
+            loginHelper = new LoginHelper(this);
+        }
+        return loginHelper;
+    }
+
     public RegistrationHelper registration() {
         if (registrationHelper == null){
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
+    }
+
+    public ManageUsersHelper manageUser(){
+        if (manageUserHelper == null){
+            manageUserHelper = new ManageUsersHelper(this);
+        }
+        return manageUserHelper;
+    }
+
+    public ResetPasswordHelper resetPassword(){
+        if (resetPasswordHelper == null){
+            resetPasswordHelper = new ResetPasswordHelper(this);
+        }
+        return resetPasswordHelper;
     }
 
     public FtpHelper ftp(){
@@ -75,5 +100,12 @@ public class ApplicationManager {
             wd.get(properties.getProperty("web.baseUrl"));
         }
         return wd;
+    }
+
+    public MailHelper mail(){
+        if (mailHelper == null){
+            mailHelper = new MailHelper(this);
+        }
+        return mailHelper;
     }
 }

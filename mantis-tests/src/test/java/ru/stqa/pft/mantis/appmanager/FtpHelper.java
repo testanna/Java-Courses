@@ -6,9 +6,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-/**
- * Created by User on 007 07.10.17.
- */
 public class FtpHelper {
     private final ApplicationManager app;
     private FTPClient ftp;
