@@ -32,7 +32,6 @@ public class ResetPasswordTests extends TestBase {
         String newPassword = "password12";
         app.resetPassword().finish(resetLink, newPassword);
         assertTrue(app.newSession().login(userForResetPassword.username, newPassword));
-
     }
 
     private String findResetLink(List<MailMessage> mailMessages, String email) {

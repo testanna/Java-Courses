@@ -12,6 +12,6 @@ public class ResetPasswordHelper extends HelperBase {
         wd.get(link);
         type(By.name("password"), password);
         type(By.name("password_confirm"), password);
-        click(By.cssSelector("button"));;
+        click(By.cssSelector("button"));
     }
 }

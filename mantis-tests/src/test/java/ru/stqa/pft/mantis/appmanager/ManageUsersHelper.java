@@ -35,11 +35,10 @@ public class ManageUsersHelper extends HelperBase {
     public User userForResetPassword(List<User> allUsers){
         List<User> usersForReset = new ArrayList<User>();
         for (User user : allUsers){
-            if ((user.email.length() != 0) & (user.username.equals(app.getProperty("web.adminLogin")) == false)){
+            if ((user.email.length() != 0) & (!user.username.equals(app.getProperty("web.adminLogin")))){
                     usersForReset.add(user);
                 }
             }
-
         return usersForReset.iterator().next();
     }
 
