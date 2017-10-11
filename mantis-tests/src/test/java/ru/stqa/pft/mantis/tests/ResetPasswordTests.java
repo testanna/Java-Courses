@@ -8,6 +8,7 @@ import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.model.MailMessage;
 import ru.stqa.pft.mantis.model.User;
 
+import javax.xml.rpc.ServiceException;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class ResetPasswordTests extends TestBase {
     }
 
     @Test
-    public void testResetPassword() throws IOException, InterruptedException, MessagingException {
+    public void testResetPassword() throws IOException, InterruptedException, MessagingException, ServiceException {
+        skipIfNotFixed(1);
         app.login().authorization(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"));
         app.manageUser().goToManageUserPage();
         List<User> allUsers = app.manageUser().allUsers();
@@ -29,7 +31,7 @@ public class ResetPasswordTests extends TestBase {
         app.manageUser().resetPassword();
         List<MailMessage> mailMessages = app.mail().waitForMail(1, 30000);
         String resetLink = findResetLink(mailMessages, userForResetPassword.email);
-        String newPassword = "password12";
+        String newPassword = "password" + System.currentTimeMillis();
         app.resetPassword().finish(resetLink, newPassword);
         assertTrue(app.newSession().login(userForResetPassword.username, newPassword));
     }
