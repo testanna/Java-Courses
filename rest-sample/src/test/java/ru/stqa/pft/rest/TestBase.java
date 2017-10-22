@@ -1,6 +1,5 @@
 package ru.stqa.pft.rest;
 
-
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.fluent.Executor;
@@ -39,7 +38,8 @@ public class TestBase {
     }
 
     private Executor getExecutor(){
-        return Executor.newInstance().auth("28accbe43ea112d9feb328d2c00b3eed", "");
+        return Executor.newInstance()
+                .auth("28accbe43ea112d9feb328d2c00b3eed", "");
     }
 
     private boolean isIssueOpen(int issueId) throws IOException {
@@ -47,12 +47,11 @@ public class TestBase {
                 .execute(Request.Get("http://demo.bugify.com/api/issues/" + Integer.toString(issueId) +
                         ".json?attachments=false&comments=false&followers=false&history=false"))
                 .returnContent().asString();
-        JsonObject parsed = (JsonObject) new JsonParser().parse(json);
-        JsonArray jarray = parsed.getAsJsonArray("issues");
-        parsed = jarray.get(0).getAsJsonObject();
-        String issueState1 = parsed.get("state_name").toString();
-        String issueState = issueState1.substring(1, issueState1.length() -1 );
-        ///String issueState = issueStateJ.getAsString();
+        JsonObject jobject = (JsonObject) new JsonParser().parse(json);
+        JsonArray jarray = jobject.getAsJsonArray("issues");
+        jobject = jarray.get(0).getAsJsonObject();
+        String issueStateForSubstring = jobject.get("state_name").toString();
+        String issueState = issueStateForSubstring.substring(1, issueStateForSubstring.length() -1 );
 
         if (issueState.equals("Open")) {
             return true;
