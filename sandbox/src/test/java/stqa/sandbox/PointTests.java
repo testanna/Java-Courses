@@ -3,9 +3,6 @@ package stqa.sandbox;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Created by User on 016 16.08.17.
- */
 public class PointTests {
 
     @Test

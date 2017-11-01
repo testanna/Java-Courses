@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="stqa.sandbox.PointTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-01T09:11:35" hostname="WIN-FP7FMM7PUB1" time="0.01">
+  <properties/>
+  <testcase name="distanceWithNegativesValuesTest" classname="stqa.sandbox.PointTests" time="0.01"/>
+  <testcase name="distanceWithSameXValueTest" classname="stqa.sandbox.PointTests" time="0.0"/>
+  <testcase name="distanceWithSameYValueTest" classname="stqa.sandbox.PointTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
