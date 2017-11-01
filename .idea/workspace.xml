@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d6fa9a5-f0b8-4954-b1e3-724a7f2d8614" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addressbook-web-tests/src/test/resources/testng-groups.xml" afterPath="$PROJECT_DIR$/addressbook-web-tests/src/test/resources/testng-groups.xml" />
-    </list>
+    <list default="true" id="6d6fa9a5-f0b8-4954-b1e3-724a7f2d8614" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/sandbox/.gradle/" />
     <ignored path="$PROJECT_DIR$/sandbox/build/" />
     <ignored path="$PROJECT_DIR$/addressbook-web-tests/.gradle/" />
@@ -149,8 +147,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/addressbook-web-tests/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+            <state relative-caret-position="136">
+              <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -2321,7 +2319,7 @@
       <workItem from="1508430520045" duration="5887000" />
       <workItem from="1508437978198" duration="338000" />
       <workItem from="1508673164929" duration="5019000" />
-      <workItem from="1509522423037" duration="4421000" />
+      <workItem from="1509522423037" duration="4774000" />
     </task>
     <servers />
   </component>
@@ -2358,7 +2356,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191388000" />
+    <option name="totallyTimeSpent" value="191741000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2806,8 +2804,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/addressbook-web-tests/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        <state relative-caret-position="136">
+          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="15" />
           <folding />
         </state>
       </provider>
