@@ -60,8 +60,10 @@ public class ApplicationManager {
         } else {
             System.setProperty("webdriver.chrome.driver",
                     "C:\\java_course\\Java-Courses\\addressbook-web-tests\\chromedriver.exe");
+
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName(browser);
+            capabilities.setPlatform(org.openqa.selenium.Platform.WINDOWS);
             wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
         }
 
