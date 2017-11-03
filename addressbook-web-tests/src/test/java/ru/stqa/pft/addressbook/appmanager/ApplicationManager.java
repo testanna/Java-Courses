@@ -44,7 +44,7 @@ public class ApplicationManager {
         wd.quit();
     }
 
-    public void init() throws IOException {
+    public void init() throws IOException, InterruptedException {
         String target = System.getProperty("target", "local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
