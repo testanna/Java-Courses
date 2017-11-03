@@ -59,9 +59,6 @@ public class ApplicationManager {
                 wd = new InternetExplorerDriver();
             }
         } else {
-            //System.setProperty("webdriver.chrome.driver",
-                   // "C:\\java_course\\Java-Courses\\addressbook-web-tests\\chromedriver.exe");
-
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName(browser);
             capabilities.setPlatform(Platform.fromString(System.getProperty("platform", "win8.1")));
